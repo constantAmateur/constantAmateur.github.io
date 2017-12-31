@@ -1,0 +1,41 @@
+---
+layout: page
+title: Publications
+use-site-title: false
+---
+
+<div class="pubs-list">
+  <ul>
+    {% assign sorted = site.data.pubs.records | sort: 'year' | reverse %}
+    {% assign lastYear = -1 %}
+    {% for paper in sorted %}
+      {% if paper.year != lastYear %}
+        <h2> {{paper.year}} </h2>
+        {% assign lastYear = paper.year %}
+      {% endif %}
+      <li class="publication"> 
+      <p>
+      {{paper.url}}
+      {% if paper.url %}
+        <a href="{{paper.url}}">Link</a>
+      {%endif%}
+      {% for author in paper.author %} 
+        {{author.name}};
+      {%endfor%}
+      <b> ({{paper.year}})</b>
+      {{paper.title}}
+      <em> {{paper.journal.name}} </em>
+      {% if paper.journal.volume %}
+      , {{paper.journal.volume}}
+      {%endif%}
+      {% if paper.journal.number %}
+      , {{paper.journal.number}}
+      {% endif %}
+      {% if paper.journal.pages %}
+      :{{paper.journal.pages}}
+      {%endif%}
+      </p>
+      </li>
+    {%endfor%}
+  </ul>
+</div>

@@ -1,0 +1,458 @@
+{
+ "metadata": {
+  "source": "pubs.bib",
+  "created": "2017-12-26T23:49:36.362790",
+  "collection": "pubs",
+  "records": 13
+ },
+ "records": [
+  {
+   "type": "article",
+   "id": "young2010",
+   "citekey": "young2010",
+   "collection": "pubs",
+   "title": "Gene ontology analysis for RNA-seq: accounting for selection bias",
+   "year": "2010",
+   "author": [
+    {
+     "name": "Young, Matthew D."
+    },
+    {
+     "name": "Wakefield, Matthew J."
+    },
+    {
+     "name": "Smyth, Gordon K."
+    },
+    {
+     "name": "Oshlack, Alicia"
+    }
+   ],
+   "journal": {
+    "name": "Genome Biology",
+    "volume": "11",
+    "month": "Feb",
+    "pages": "R14",
+    "number": "2"
+   }
+  },
+  {
+   "type": "article",
+   "id": "collord2017integrated",
+   "citekey": "collord2017integrated",
+   "collection": "pubs",
+   "title": "An integrated genomic analysis of anaplastic meningioma identifies prognostic molecular signatures",
+   "year": "2017",
+   "author": [
+    {
+     "name": "Collord, Grace"
+    },
+    {
+     "name": "Tarpey, Patrick"
+    },
+    {
+     "name": "Kurbatova, Natalja"
+    },
+    {
+     "name": "Martincorena, Inigo"
+    },
+    {
+     "name": "Moran, Sebastian"
+    },
+    {
+     "name": "Castro, Manuel"
+    },
+    {
+     "name": "Nagy, Tibor"
+    },
+    {
+     "name": "Bignell, Graham"
+    },
+    {
+     "name": "Maura, Francesco"
+    },
+    {
+     "name": "Berna, Jorge"
+    },
+    {
+     "name": "others, "
+    }
+   ]
+  },
+  {
+   "type": "article",
+   "id": "pal2013global",
+   "citekey": "pal2013global",
+   "collection": "pubs",
+   "title": "Global changes in the mammary epigenome are induced by hormonal cues and coordinated by Ezh2",
+   "year": "2013",
+   "author": [
+    {
+     "name": "Pal, Bhupinder"
+    },
+    {
+     "name": "Bouras, Toula"
+    },
+    {
+     "name": "Shi, Wei"
+    },
+    {
+     "name": "Vaillant, Fran{\u00e7}ois"
+    },
+    {
+     "name": "Sheridan, Julie M"
+    },
+    {
+     "name": "Fu, Naiyang"
+    },
+    {
+     "name": "Breslin, Kelsey"
+    },
+    {
+     "name": "Jiang, Kun"
+    },
+    {
+     "name": "Ritchie, Matthew E"
+    },
+    {
+     "name": "Young, Matthew"
+    },
+    {
+     "name": "others, "
+    }
+   ],
+   "journal": {
+    "name": "Cell reports",
+    "volume": "3",
+    "pages": "411--426",
+    "number": "2"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2011chip",
+   "citekey": "young2011chip",
+   "collection": "pubs",
+   "title": "ChIP-seq analysis reveals distinct H3K27me3 profiles that correlate with transcriptional activity",
+   "year": "2011",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Willson, Tracy A"
+    },
+    {
+     "name": "Wakefield, Matthew J"
+    },
+    {
+     "name": "Trounson, Evelyn"
+    },
+    {
+     "name": "Hilton, Douglas J"
+    },
+    {
+     "name": "Blewitt, Marnie E"
+    },
+    {
+     "name": "Oshlack, Alicia"
+    },
+    {
+     "name": "Majewski, Ian J"
+    }
+   ],
+   "journal": {
+    "name": "Nucleic Acids Research",
+    "volume": "39",
+    "pages": "7415--7427",
+    "number": "17"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2012differential",
+   "citekey": "young2012differential",
+   "collection": "pubs",
+   "title": "Differential Expression for RNA Sequencing (RNA-Seq) Data: Mapping, Summarization, Statistical Analysis, and Experimental Design",
+   "year": "2012",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "McCarthy, Davis J"
+    },
+    {
+     "name": "Wakefield, Matthew J"
+    },
+    {
+     "name": "Smyth, Gordon K"
+    },
+    {
+     "name": "Oshlack, Alicia"
+    },
+    {
+     "name": "Robinson, Mark D"
+    }
+   ]
+  },
+  {
+   "type": "article",
+   "id": "tarpey2017driver",
+   "citekey": "tarpey2017driver",
+   "collection": "pubs",
+   "title": "The driver landscape of sporadic chordoma",
+   "year": "2017",
+   "author": [
+    {
+     "name": "Tarpey, Patrick S"
+    },
+    {
+     "name": "Behjati, Sam"
+    },
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Martincorena, Inigo"
+    },
+    {
+     "name": "Alexandrov, Ludmil B"
+    },
+    {
+     "name": "Farndon, Sarah J"
+    },
+    {
+     "name": "Guzzo, Charlotte"
+    },
+    {
+     "name": "Hardy, Claire"
+    },
+    {
+     "name": "Latimer, Calli"
+    },
+    {
+     "name": "Butler, Adam P"
+    },
+    {
+     "name": "others, "
+    }
+   ],
+   "journal": {
+    "name": "Nature communications",
+    "volume": "8",
+    "pages": "890",
+    "number": "1"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2015dependence",
+   "citekey": "young2015dependence",
+   "collection": "pubs",
+   "title": "Dependence of fragmentation in self-gravitating accretion discs on small-scale structure",
+   "year": "2015",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Clarke, Cathie J"
+    }
+   ],
+   "journal": {
+    "name": "Monthly Notices of the Royal Astronomical Society",
+    "volume": "451",
+    "pages": "3987--3994",
+    "number": "4"
+   }
+  },
+  {
+   "type": "article",
+   "id": "oshlack2010rna",
+   "citekey": "oshlack2010rna",
+   "collection": "pubs",
+   "title": "From RNA-seq reads to differential expression results",
+   "year": "2010",
+   "author": [
+    {
+     "name": "Oshlack, Alicia"
+    },
+    {
+     "name": "Robinson, Mark D"
+    },
+    {
+     "name": "Young, Matthew D"
+    }
+   ],
+   "journal": {
+    "name": "Genome biology",
+    "volume": "11",
+    "pages": "220",
+    "number": "12"
+   }
+  },
+  {
+   "type": "article",
+   "id": "li2011seqanswers",
+   "citekey": "li2011seqanswers",
+   "collection": "pubs",
+   "title": "The SEQanswers wiki: a wiki database of tools for high-throughput sequencing analysis",
+   "year": "2011",
+   "author": [
+    {
+     "name": "Li, Jing-Woei"
+    },
+    {
+     "name": "Robison, Keith"
+    },
+    {
+     "name": "Martin, Marcel"
+    },
+    {
+     "name": "Sj\u00f6din, Andreas"
+    },
+    {
+     "name": "Usadel, Bj\u00f6rn"
+    },
+    {
+     "name": "Young, Matthew"
+    },
+    {
+     "name": "Olivares, Eric C"
+    },
+    {
+     "name": "Bolser, Dan M"
+    }
+   ],
+   "journal": {
+    "name": "Nucleic acids research",
+    "volume": "40",
+    "pages": "D1313--D1317",
+    "number": "D1"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2015binary",
+   "citekey": "young2015binary",
+   "collection": "pubs",
+   "title": "Binary accretion rates: dependence on temperature and mass ratio",
+   "year": "2015",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Clarke, Cathie J"
+    }
+   ],
+   "journal": {
+    "name": "Monthly Notices of the Royal Astronomical Society",
+    "volume": "452",
+    "pages": "3085--3091",
+    "number": "3"
+   }
+  },
+  {
+   "type": "article",
+   "id": "behjati2017recurrent",
+   "citekey": "behjati2017recurrent",
+   "collection": "pubs",
+   "title": "Recurrent mutation of IGF signalling genes and distinct patterns of genomic rearrangement in osteosarcoma",
+   "year": "2017",
+   "author": [
+    {
+     "name": "Behjati, Sam"
+    },
+    {
+     "name": "Tarpey, Patrick S"
+    },
+    {
+     "name": "Haase, Kerstin"
+    },
+    {
+     "name": "Ye, Hongtao"
+    },
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Alexandrov, Ludmil B"
+    },
+    {
+     "name": "Farndon, Sarah J"
+    },
+    {
+     "name": "Collord, Grace"
+    },
+    {
+     "name": "Wedge, David C"
+    },
+    {
+     "name": "Martincorena, Inigo"
+    },
+    {
+     "name": "others, "
+    }
+   ],
+   "journal": {
+    "name": "Nature communications",
+    "volume": "8",
+    "pages": "ncomms15936"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2015evolution",
+   "citekey": "young2015evolution",
+   "collection": "pubs",
+   "title": "The evolution of the mass ratio of accreting binaries: the role of gas temperature",
+   "year": "2015",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Baird, Jonathon T"
+    },
+    {
+     "name": "Clarke, Cathie J"
+    }
+   ],
+   "journal": {
+    "name": "Monthly Notices of the Royal Astronomical Society",
+    "volume": "447",
+    "pages": "2907--2914",
+    "number": "3"
+   }
+  },
+  {
+   "type": "article",
+   "id": "young2012reliable",
+   "citekey": "young2012reliable",
+   "collection": "pubs",
+   "title": "Reliable estimation of the column density in smoothed particle hydrodynamic simulations",
+   "year": "2012",
+   "author": [
+    {
+     "name": "Young, Matthew D"
+    },
+    {
+     "name": "Bertram, Erik"
+    },
+    {
+     "name": "Moeckel, Nick"
+    },
+    {
+     "name": "Clarke, Cathie J"
+    }
+   ],
+   "journal": {
+    "name": "Monthly Notices of the Royal Astronomical Society",
+    "volume": "426",
+    "pages": "1061--1072",
+    "number": "2"
+   }
+  }
+ ]
+}
