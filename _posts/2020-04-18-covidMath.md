@@ -1,6 +1,6 @@
 ---
 layout: post
-title: COVID19
+title: Exponentials and COVID19
 draft: true
 subtitle: Yet another COVID19 exploration
 ---
@@ -110,10 +110,56 @@ I've stopped the plot at the point where the graph is symmetric and each week of
 
 # Testing and true positive rates
 
-Basic idea of TPR "paradox"
+One of the most basic statistical "paradoxes" that every undergraduate will be familiar with (I hope), is that of not accounting for population incidence in medical testing.  The usual example is that you have a test for a disease that has a 100% true positive rate (so it identifies everyone with the disease), and 1% false positive rate (meaning 99% of people who don't have the disease test negative).  If you test positive for the disease, what is the chance that you have the disease?  The "intuitive" answer is to say the test is 99% accurate and so your chances of having the disease are 99%.
+
+This is wrong, because we don't have a crucial piece of information; how prevalent is the disease in the population?  If the disease only occurs in 1% of the population, you are just as likely to be a false positive as to truly have the disease.  That is, your probability of having the disease after testing positive is approximately 50% not 99%.
+
+This is relevant in the context of COVID19, because one of the really difficult thing to nail down has been the infection mortality rate; what fraction of those who are infected die.  This has been difficult to nail down because its very hard to know how many people in the population had the disease, but were asymptomatic and so were never counted.  So people have designed various experiments and analyses to guess how many people in the population have had COVID19, such as antibody tests.
 
 ## Variability depends on population percentage 
+
+There are several just obviously wrong studies, such as [this antibody prevalence study](https://www.medrxiv.org/content/10.1101/2020.04.14.20062463v1).  They are obviously wrong because while we don't have good data for the precise infection mortality rate (which is not one number anyway and will depend on factors like age and health of individual), we have several good bits of evidence that put a lower bound on the mortality rate.  These are cases where even if you assume 100% of individuals had the disease (which they almost certainly didn't), you still get a mortality rate around 0.2%.  The three that I have come across are the diamond princess cruise ship, New York City and certain regions of Northern Italy.  In all cases, even if everyone in the region were infected, you can't get the mortality below about 0.2%, with the realistic number looking like it's somewhere around 1%.  So any study that concludes the mortality is significantly below 0.2% should just be immediately dismissed as absurd unless some really amazing evidence that the numbers from studies based on the diamond princess and others are wrong.  Strong claims require strong evidence.
+
+To me the far more likely explanation lies in the following equation (which expresses the "paradox" from above),
+
+$$
+O = \rho \textrm{TPR} + (1-\rho) \textrm{FPR}
+$$
+
+that is the observed rate of positives $O$ equals the true rate of positives $\rho$ times the true positive rate, plus the true rate of negatives $1-\rho$ times the false positive rate.  Which shows that even a small false positive rate will lead to a big difference in your inferred population prevalence when the true prevalence ($\rho$) is low.
+
+Of course, the people doing these studies are aware of this and so try and estimate the true positive rate and false positive rate for their test.  If you know these, you can just invert the equation and infer what the true prevalence is
+
+$$
+\rho = \frac{O-\textrm{FPR}}{\textrm{TPR}-\textrm{FPR}}
+$$
+
+The problem with this is that the estimates of false positive rate are themselves uncertain and a small error in estimating your false positive rate can lead to a big error in your inferred population prevalence.
+
 ## High variability much higher to get when large population fraction.
 
+All of this has been covered in much more detail, by people much better at communicating the point than I am.  What I think is interesting about this and that I haven't seen mentioned as much is that having a strong dependence on the false positive rate only happens when $\rho$ is low.  We can see this if we simulate ten random tests with false positive rates between 0 and 0.05 and plot the difference in observed and true prevalence relative to the true prevalence, $\frac{o-\rho}{\rho}$,
+
+```R
+rho = seq(0.01,0.2,.01)
+fpr = seq(0,.05,.01)
+tpr = 1
+sims = lapply(rho,function(e) {
+  o = (e*tpr+(1-e)*fpr)
+  (o-e)/e})
+names(sims) = sprintf('%d%%',round(100*rho))
+boxplot(sims,
+  las=2,
+  xlab='True population prevalence',
+  ylab='Error in population prevelance estimate',
+  frame.plot=FALSE)
+```
+![Testing]({{ "/img/covid/covid19_testing.png"}})
+
+What I find interesting about this plot, is that the amount that errors in the false positive rate only really have an effect when the population prevalence is low.  So I think we could actually turn the argument around and argue that the fact that we see large variability in the estimates of population frequency of COVID19 **implies** that the true population frequency is low.  Of course there are other possible explanations.  Different regions will have different prevalences and it's always possible to get variability by making an outright mistake.  But unfortunately I think that the truth is that the infection mortality of 1% is probably going to prove to be about right.
+
+# To normalise or not
+
+# Thinking quantitatively
 
 
