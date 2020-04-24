@@ -2,7 +2,7 @@
 layout: post
 title: COVID19
 draft: false
-img: /img/covid/covid19_comparison.png
+image: /img/covid/covid19_comparison.png
 subtitle: Some mathematical thoughts about the COVID19 pandemic 
 ---
 
