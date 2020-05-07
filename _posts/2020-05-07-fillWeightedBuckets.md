@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Filling weighted buckets
-draft: true
-image: /img/covid/covid19_comparison.png
+draft: false
 subtitle: The solution to a pratical programming problem
 ---
 
