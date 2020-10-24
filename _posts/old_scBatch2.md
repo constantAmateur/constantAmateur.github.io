@@ -12,7 +12,7 @@ This is a fast moving area and my own set of "best practices" for processing sin
 
 # Where do batch effects come from?
 
-I sometimes see batch effects described like they're some bacterial infection the data picked up going about its busy life.  We made it wear a face mask, but it happened anyway: our data has batch effects.  No point worrying about where they got it, just give it the antibiotics and get rid of it.
+I sometimes see batch effects described like they're some bacterial infection the data picked up going about its busy life.  Our data has batch effects, no point worrying about where they got it, just give it the antibiotics and get rid of it.
 
 Of course, when we talk about batch effects, what we really mean are systematic differences between different parts of the experiment that we want to remove.  Variability we didn't want and obscures what we care about.  Sometimes these are biological differences we don't care about, but mostly the presumption is that the differences are driven by technical effects.  Most often, this will be driven by a multitude of big and small differences, each contributing a part of the overall technical variability.
 
