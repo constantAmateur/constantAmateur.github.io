@@ -49,9 +49,9 @@ $$
 which is where the ordinary least squares minimisation comes from.  To find the minimum we do the usual thing and find where all the partial derivatives are zero.  In our case, there's just one.
 
 $$
-0 &=& \frac{d(-\log{l})}{dc} = 2 \sum_i c (y_i - c) \\
-0 &=& \sum_i (y_i -c) \\
-c &=& \frac{1}{N} \sum_i y_i
+0 = \frac{d}{dc}(-\log{l}) = 2 \sum_i c (y_i - c) \\
+0 = \sum_i (y_i -c) \\
+c = \frac{1}{N} \sum_i y_i
 $$
 
 ## Intercept only
@@ -102,7 +102,7 @@ Remember what mean by this is find the value of $\beta_x$ (or $\beta_x$ and $c$)
 
 $$
 l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \beta_x x_i}{\sigma} \right)^2} \\
-or
+\text{or} \\
 l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \beta_x x_i - c}{\sigma} \right)^2}
 $$
 
@@ -110,7 +110,7 @@ which is mathematically equivalent to minimising (see asside above)
 
 $$
 \sum_i (y_i - \beta_x x_i)^2\\
-or\\
+\text{or}\\
 \sum_i (y_i - \beta_x x_i - c)^2
 $$
 
@@ -253,7 +253,7 @@ So we learnt something from the one variable $y ~ x$ case, but with multiple var
 
 # Making things more complicated to make them simpler
 
-Usually I tend to favour keeping things simple until you understand exactly what is happening.  However, this is one case where making the situation more complex actually helps understand the simple case more easily (at least I think so).  So let's try that and extend to the case of $m$ covariates, $x__1$, $x_2$, ..., $x_m$.  The model we fit will than have $m$ coefficients $\beta_1$, ... $\beta_m$ (plus an intercept) that we need to find.  It's pretty easy to show that,
+Usually I tend to favour keeping things simple until you understand exactly what is happening.  However, this is one case where making the situation more complex actually helps understand the simple case more easily (at least I think so).  So let's try that and extend to the case of $m$ covariates, $x_1$, $x_2$, ..., $x_m$.  The model we fit will than have $m$ coefficients $\beta_1$, ... $\beta_m$ (plus an intercept) that we need to find.  It's pretty easy to show that,
 
 $$
 \text{cov}(y,x_1) = \text{cov}(x_1,x_1) \beta_1 + \text{cov}(x_1,x_2) \beta_2 + ... + \text{cov}(x_1,x_m) \beta_m \\
@@ -268,7 +268,7 @@ $$
 \text{cov}(Y,X) = \beta \text{cov}(X,X)
 $$
 
-here $\text{cov}(X,X)$ is just the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix).  To solve for $\beta$ we just invert this matrix and multiple it by the column matrix with entries $\text{cov}(y,x_i)$.  If we define the entry $i,j$ of the inverse covariance matrix to be $p_{i,j}$ then $\beta__i$ is just
+here $\text{cov}(X,X)$ is just the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix).  To solve for $\beta$ we just invert this matrix and multiple it by the column matrix with entries $\text{cov}(y,x_i)$.  If we define the entry $i,j$ of the inverse covariance matrix to be $p_{i,j}$ then $\beta_i$ is just
 
 $$
 \beta_i = \sum_j  \text{cov}(y,x_j) p_{i,j}
@@ -289,7 +289,7 @@ $$
 
 ## Great. This helps how?
 
-This seems like a lot of formulas and extra complication without the promised simplification.  But if we look at the above formula for a bit, we see that each of the linear regression coefficients is just the weighted sum of all the covariances between the observed data $y$ and the model variables $x_i$.  So to understand the coefficients, we just need to understand what the weights, $p__{i,j}$ are.
+This seems like a lot of formulas and extra complication without the promised simplification.  But if we look at the above formula for a bit, we see that each of the linear regression coefficients is just the weighted sum of all the covariances between the observed data $y$ and the model variables $x_i$.  So to understand the coefficients, we just need to understand what the weights, $p_{i,j}$ are.
 
 These do have a special meaning, which is that the inverse covariance matrix (the $p_{i,j}$) are the [partial correlations](https://en.wikipedia.org/wiki/Partial_correlation) between $x_i$ and $x_j$ (up to a constant).  I found [this discussion](https://stats.stackexchange.com/questions/10795/how-to-interpret-an-inverse-covariance-or-precision-matrix) helpful in understanding what partial correlations are.  The partial correlation is basically the correlation that is left, once all the other correlations have been taken into account.
 
