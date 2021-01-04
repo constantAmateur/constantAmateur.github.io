@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Linear Regression
-draft: true
-image: /img/regression/blob
+draft: false
+image: /img/linearRegression/visFit2.png
 subtitle: Developing intuition for regression coefficients
 ---
 
@@ -20,7 +20,7 @@ $$
 
 This is stupidly simple and basically useless, but is instructive for being clear on how we determine what the coefficients in linear regression are.  
 
-## Mathematical asside
+## Mathematical aside
 
 What we really mean when we say "fit a linear model" is that we are assuming our $y_i$ are drawn from a normal distribution, with fixed variance and mean given by the right hand side of the equation above (i.e., $c$).  That is, the probability (or likelihood) of the $i$th bit of data ($y_i$) in our super basic linear model is
 
@@ -46,7 +46,7 @@ $$
 \sum_i (y_i - c)^2
 $$
 
-which is where the ordinary least squares minimisation comes from.  To find the minimum we do the usual thing and find where all the partial derivatives are zero.  In our case, there's just one.
+which is where ordinary least squares minimisation comes from.  To find the minimum we do the usual thing and find where all the partial derivatives are zero.  In our case, there's just one.
 
 $$
 0 = \frac{d}{dc}(-\log{l}) = 2 \sum_i c (y_i - c) \\
@@ -84,6 +84,8 @@ Residual standard error: 0.9081 on 99 degrees of freedom
 The mean of y is -0.0429569
 ```
 
+So the best fit value of $c$ is indeed the average of $y$ as we would expect.
+
 ## One variable only
 
 The slightly less useless version is of course where we have another variable $x$ related to $y$ in some way.  If we then modify our model to be
@@ -98,7 +100,7 @@ $$
 y = \beta_x x + c
 $$
 
-Remember what mean by this is find the value of $\beta_x$ (or $\beta_x$ and $c$) that makes the observed $y_i$s the most probable (or likely) if the data is drawn from a normal distribution with mean $\beta_x x_i$ (or $\beta_x x_i + c).  That is, we want to find $\beta_x$ (or $\beta_x$ and $c$) that minimises
+Remember what we mean by this is find the value of $\beta_x$ (or $\beta_x$ and $c$) that makes the observed $y_i$s the most probable (or likely) if the data is drawn from a normal distribution with mean $\beta_x x_i$ (or $\beta_x x_i + c).  That is, we want to find $\beta_x$ (or $\beta_x$ and $c$) that minimises
 
 $$
 l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \beta_x x_i}{\sigma} \right)^2} \\
@@ -106,7 +108,7 @@ l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \bet
 l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \beta_x x_i - c}{\sigma} \right)^2}
 $$
 
-which is mathematically equivalent to minimising (see asside above)
+which is mathematically equivalent to minimising (see aside above)
 
 $$
 \sum_i (y_i - \beta_x x_i)^2\\
@@ -114,7 +116,7 @@ $$
 \sum_i (y_i - \beta_x x_i - c)^2
 $$
 
-This is a lot of formulas and ont a lot of intuition.  So let's consider some made up data,
+This is a lot of formulas and not a lot of intuition.  So let's consider some made up data,
 
 ```R
 x = rnorm(1000)
@@ -135,6 +137,26 @@ So what is your intuition as to what fitting a model with/without the intercept 
 
 ```R
 fit = lm(y ~ x + 0)
+summary(fit)
+```
+
+which  gives
+
+```
+Call:
+lm(formula = y ~ x + 0)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+ 6.973  9.304 10.002 10.688 13.296 
+
+Coefficients:
+  Estimate Std. Error t value Pr(>|t|)
+x   0.2507     0.3194   0.785    0.433
+
+Residual standard error: 10.05 on 999 degrees of freedom
+Multiple R-squared:  0.0006164,	Adjusted R-squared:  -0.0003839 
+F-statistic: 0.6162 on 1 and 999 DF,  p-value: 0.4326
 ```
 
 So without the intercept term, a linear model will use what it can to explain the data, and imply a relationship with the variables in the model (in this case $x$).  Looking at some more formulas is helpful here.  It is easy to show that the value of $\beta_x$ that minimises the probability of the data in the no intercept model is
@@ -167,9 +189,9 @@ But what about the more complicated (and more interesting) case of multiple regr
 
 ![yz]({{ "/img/linearRegression/multiRegression_yz.png"}})
 
-So if we fit a linear model $y ~ x + z$, what would you expect the coefficients to be?  Remember that what this means is that we are assuming each data point $y_i$ is drawn from a normal distribution with mean $\beta_x x_i + \beta_z z_i + c$.  When we fit the model, we find the values of $\beta_x$, $\beta_z$, and $c$ that make the observed $y_i$ the most probable.
+So if we fit a linear model $y ~ x + z$, what would you expect the coefficients to be?  Remember that the intercept term is included by default and that what this means is that we are assuming each data point $y_i$ is drawn from a normal distribution with mean $\beta_x x_i + \beta_z z_i + c$.  When we fit the model, we find the values of $\beta_x$, $\beta_z$, and $c$ that make the observed $y_i$ the most probable.
 
-It should be fairly obvious that we should expect that $c$ should be approximately 0.  If we naively extrapolate from simple regression, we might expect that $\beta_x = 0.4$ and $\beta_z = 0.5$.  So let's try it out.  
+It should be fairly obvious that we should expect that $c$ should be approximately 0.  Suppose also that all variances are 1.  If we naively extrapolate from simple regression, we might expect that $\beta_x = 0.4$ and $\beta_z = 0.5$.  So let's try it out.
 
 ```R
 fit = lm(y ~ x + z)
@@ -206,6 +228,7 @@ If you're not used to reading these outputs, it says the coefficient for $z$ is 
 So $x$ and $z$ are correlated, which clearly feeds into the counter intuitive results above.  But even when presented with all the correlations, I'd be hard pressed to intuit that the correlation between $x$ and $z$ would cause the coefficient of $z$ to be the same as if $x$ wasn't included and $x$ to be 0.  Here is the code to generate these results
 
 ```R
+library(MASS)
 yx = 0.4
 yz = 0.5
 xz = 0.8
@@ -265,7 +288,7 @@ $$
 Which is much more easily expressed in matrix notation as
 
 $$
-\text{cov}(Y,X) = \beta \text{cov}(X,X)
+\text{cov}(\mathbf{Y},\mathbf{X}) = \mathbf{\beta} \text{cov}(\mathbf{X},\mathbf{X})
 $$
 
 here $\text{cov}(X,X)$ is just the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix).  To solve for $\beta$ we just invert this matrix and multiple it by the column matrix with entries $\text{cov}(y,x_i)$.  If we define the entry $i,j$ of the inverse covariance matrix to be $p_{i,j}$ then $\beta_i$ is just
@@ -291,9 +314,7 @@ $$
 
 This seems like a lot of formulas and extra complication without the promised simplification.  But if we look at the above formula for a bit, we see that each of the linear regression coefficients is just the weighted sum of all the covariances between the observed data $y$ and the model variables $x_i$.  So to understand the coefficients, we just need to understand what the weights, $p_{i,j}$ are.
 
-These do have a special meaning, which is that the inverse covariance matrix (the $p_{i,j}$) are the [partial correlations](https://en.wikipedia.org/wiki/Partial_correlation) between $x_i$ and $x_j$ (up to a constant).  I found [this discussion](https://stats.stackexchange.com/questions/10795/how-to-interpret-an-inverse-covariance-or-precision-matrix) helpful in understanding what partial correlations are.  The partial correlation is basically the correlation that is left, once all the other correlations have been taken into account.
-
-Since $x_i$ is always correlated with itself, the diagonal entries will always be $1$ just like in the covariance matrix (up to a scaling factor that multiplies the whole matrix).
+These do have a special meaning, which is that the inverse covariance matrix (the $p_{i,j}$) are the [partial correlations](https://en.wikipedia.org/wiki/Partial_correlation) between $x_i$ and $x_j$ (up to a constant).  I found [this discussion](https://stats.stackexchange.com/questions/10795/how-to-interpret-an-inverse-covariance-or-precision-matrix) helpful in understanding what partial correlations are.  The partial correlation is basically the correlation that is left, once all the other correlations have been taken into account.  The correlation between residuals rather than the variables themselves.
 
 ## Visualising the relationships
 
@@ -302,6 +323,7 @@ Which gives us a rough idea of how to expect regression coefficients to behave. 
 Here's a function to visualise the matricies inovlved.  It should work as long as [ComplexHeatmap](https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html) is installed, which it should be as [it's great](https://twitter.com/constantAmateur/status/1317934098288095233).
 
 ```R
+library(ComplexHeatmap)
 visLinReg = function(data,covars,toPlot=c('cov_yx','cov_xx','invCov')){
   #Construct inverse correlation matrix
   covMat = cov(do.call(cbind,covars))
@@ -427,7 +449,7 @@ From which you can see that the coefficient of $x_5$ is driven more by the contr
 
 # Conclusion
 
-Having gone through all that, I'm not sure I'm really all that much closer to having a reliable intuition for how to interpret linear regression coefficients.  There are some simple cases, where it's clear what the interpretation is.  If all covariates (the $x_i$s) are uncorrelated, the regression coefficient $\beta_i$ is closely related to the corelation between $y$ and $x_i$.
+Having gone through all that, I'm not sure I'm really all that much closer to having a reliable intuition for how to interpret linear regression coefficients.  There are some simple cases, where it's clear what the intuition is.  If all covariates (the $x_i$s) are uncorrelated, the regression coefficient $\beta_i$ is closely related to the corelation between $y$ and $x_i$.
 
 But in general, it is essential that we understand how covariates relate to one another (the covariance matrix) and their partial correlation (the inverse covariance matrix).  It is easy to construct cases where the linear regression coefficient for $x_i$ is driven not by the correlation between $y$ and $x_i$, but by the relationship between $y$ and $x_j$ together with a correlation between $x_i$ and $x_j$.
 
