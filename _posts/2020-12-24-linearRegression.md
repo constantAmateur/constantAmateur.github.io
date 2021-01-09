@@ -100,7 +100,7 @@ $$
 y = \beta_x x + c
 $$
 
-Remember what we mean by this is find the value of $\beta_x$ (or $\beta_x$ and $c$) that makes the observed $y_i$s the most probable (or likely) if the data is drawn from a normal distribution with mean $\beta_x x_i$ (or $\beta_x x_i + c).  That is, we want to find $\beta_x$ (or $\beta_x$ and $c$) that minimises
+Remember what we mean by this is find the value of $\beta_x$ (or $\beta_x$ and $c$) that makes the observed $y_i$s the most probable (or likely) if the data is drawn from a normal distribution with mean $\beta_x x_i$ (or $\beta_x x_i + c$).  That is, we want to find $\beta_x$ (or $\beta_x$ and $c$) that minimises
 
 $$
 l(y_i) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \left( \frac{y_i- \beta_x x_i}{\sigma} \right)^2} \\
@@ -189,9 +189,9 @@ But what about the more complicated (and more interesting) case of multiple regr
 
 ![yz]({{ "/img/linearRegression/multiRegression_yz.png"}})
 
-So if we fit a linear model $y ~ x + z$, what would you expect the coefficients to be?  Remember that the intercept term is included by default and that what this means is that we are assuming each data point $y_i$ is drawn from a normal distribution with mean $\beta_x x_i + \beta_z z_i + c$.  When we fit the model, we find the values of $\beta_x$, $\beta_z$, and $c$ that make the observed $y_i$ the most probable.
+So if we fit a linear model $y \sim x + z$, what would you expect the coefficients to be?  Remember that the intercept term is included by default and that what this means is that we are assuming each data point $y_i$ is drawn from a normal distribution with mean $\beta_x x_i + \beta_z z_i + c$.  When we fit the model, we find the values of $\beta_x$, $\beta_z$, and $c$ that make the observed $y_i$ the most probable.
 
-It should be fairly obvious that we should expect that $c$ should be approximately 0.  Suppose also that all variances are 1.  If we naively extrapolate from simple regression, we might expect that $\beta_x = 0.4$ and $\beta_z = 0.5$.  So let's try it out.
+It should be fairly obvious that we should expect that $c$ should be approximately 0.  Suppose also that all variances are 1.  If we naively extrapolate from simple regression, we might expect that the coefficients should just be the correlations (as the variance is $1$ for all variables).  That would lead as to predict that $\beta_x = 0.4$ and $\beta_z = 0.5$.  So let's try it out.
 
 ```R
 fit = lm(y ~ x + z)
@@ -272,11 +272,11 @@ $$
 
 where $\rho_{a,b}$ is the correlation between $a$ and $b$.  You can work through these formulas to see that I constructed the data above so that the terms would exactly cancel and conspire to make $\beta_x = 0$.  In terms of building an intuition, these formulas suggest that in the mutiple regression case, the coefficients are proportional to the simple correlation between $y$ and each variable in the model ($x$ and $z$) after subtracting off some of the correlation with the other variable.  As you would expect, in the case where $x$ and $z$ are completely unrelated, the multiple regression case would collapse down to what our intuition from simple regression would suggest.  That is, $\beta_x = \rho_{x,y}$ and $\beta_z = \rho_{z,y}$.
 
-So we learnt something from the one variable $y ~ x$ case, but with multiple variables we need to moderate the intuition to account for any correlation between covariates (like $x$ and $z$ in the above example).
+So we learnt something from the one variable $y \sim x$ case, but with multiple variables we need to moderate the intuition to account for any correlation between covariates (like $x$ and $z$ in the above example).
 
 # Making things more complicated to make them simpler
 
-Usually I tend to favour keeping things simple until you understand exactly what is happening.  However, this is one case where making the situation more complex actually helps understand the simple case more easily (at least I think so).  So let's try that and extend to the case of $m$ covariates, $x_1$, $x_2$, ..., $x_m$.  The model we fit will than have $m$ coefficients $\beta_1$, ... $\beta_m$ (plus an intercept) that we need to find.  It's pretty easy to show that,
+Usually I tend to favour keeping things simple until you understand exactly what is happening.  However, this is one case where making the situation more complex actually helps understand the simple case more easily (at least I think so).  So let's try that and extend to the case of $m$ covariates, $x_1$, $x_2$, ..., $x_m$.  The model we fit will than have $m$ coefficients $\beta_1$, ... $\beta_m$ (plus an intercept) that we need to find.  It's pretty easy to show that the best fit values must satisfy,
 
 $$
 \text{cov}(y,x_1) = \text{cov}(x_1,x_1) \beta_1 + \text{cov}(x_1,x_2) \beta_2 + ... + \text{cov}(x_1,x_m) \beta_m \\
@@ -300,7 +300,7 @@ $$
 writing out an example
 
 $$
-\beta_1 = \text{cov}(y,x_1) p_{1,1} + \text{cov}(y,x_2) p_{1,2} + \text{cov}(y,x31) p_{1,3} + ... + \text{cov}(y,x_m) p_{1,m}
+\beta_1 = \text{cov}(y,x_1) p_{1,1} + \text{cov}(y,x_2) p_{1,2} + \text{cov}(y,x_3) p_{1,3} + ... + \text{cov}(y,x_m) p_{1,m}
 $$
 
 and if we take the easy case of $m=2$ (our example with $x$ and $z$ above)
@@ -445,7 +445,7 @@ This will obviously be different every time you run it, but here is an example.
 
 ![betaVis3]({{ "/img/linearRegression/visFit3.png"}})
 
-From which you can see that the coefficient of $x_5$ is driven more by the contribution from the covariance of $\text{cov}(y,x_1) * \text{cov}(x_1,x_5)$ than the covariance of $y$ with $x_5$.  Worse still is $\beta_4$, where the sign of the coefficient is different from what you would intuit if you just considered $\text{cov}(y,x_4)$.
+From which you can see that the coefficient of $x_5$ is driven more by the contribution from $\text{cov}(y,x_1) * \text{cov}(x_1,x_5)$ than the covariance of $y$ with $x_5$.  Worse still is $\beta_4$, where the sign of the coefficient is different from what you would intuit if you just considered $\text{cov}(y,x_4)$.
 
 # Conclusion
 
