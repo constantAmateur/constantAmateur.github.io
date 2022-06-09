@@ -2,7 +2,7 @@
 layout: post
 title: Estimating the copy number rate per cell division
 draft: false
-image: /img/linearRegression/Figure1.png
+image: /img/mitoticNondisjunction/Figure1.png
 subtitle: Uniparental disomy constrains the rate of mitotic nondisjunction
 ---
 
